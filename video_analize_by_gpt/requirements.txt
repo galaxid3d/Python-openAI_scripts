@@ -1,0 +1,6 @@
+Werkzeug==2.3.7
+Flask==2.0.1
+Flask-CORS==3.0.10
+openai==1.2.3
+youtube_transcript_api
+httpx~=0.26.0
