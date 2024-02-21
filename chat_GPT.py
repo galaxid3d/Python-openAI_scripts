@@ -54,7 +54,7 @@ class ChatGPT:
 
         # Replacing all special keywords to text in message
         for replace_keyword, replace_text in replace_texts.items():
-            message.replace(replace_keyword, replace_text)
+            message = message.replace(replace_keyword, replace_text)
 
         # Add user message
         self._messages.append({"role": "user", "content": message})
@@ -70,10 +70,10 @@ class ChatGPT:
                 response_format=self._response_format,
             )
         except APITimeoutError:
-            yield [f"[Error!!! GPT didn't give response with {self._client.timeout:.2f} seconds!]"]
+            yield f"[Error!!! GPT didn't give response with {self._client.timeout:.2f} seconds!]"
             return
         except Exception as e:
-            yield [f"[Error!!! GPT something wrong: {str(e)}]"]
+            yield f"[Error!!! GPT something wrong: {str(e)}]"
             return
 
         if self._is_stream:
